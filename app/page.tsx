@@ -3,22 +3,9 @@ import Image from "next/image";
 
 import NewsList from "@/app/_components/NewsList";
 import ButtonLink from "@/app/_components/ButtonLink";
+import { News } from "@/app/_libs/microcms";
 
-export const revalidate = 60;
-
-type News = {
-  id: string;
-  title: string;
-  category: {
-    name: string;
-  };
-  publishedAt: string;
-  createdAt: string;
-};
-
-const data: {
-  contents: News[];
-} = {
+const data: { contents: News[] } = {
   contents: [
     {
       id: "1",
@@ -27,7 +14,7 @@ const data: {
         name: "更新情報",
       },
       publishedAt: "2023/05/19",
-      createdAt: "2023/05/19",
+      createdeat: "2023/05/19",
     },
     {
       id: "2",
@@ -36,7 +23,7 @@ const data: {
         name: "更新情報",
       },
       publishedAt: "2023/05/19",
-      createdAt: "2023/05/19",
+      createdeat: "2023/05/19",
     },
     {
       id: "3",
@@ -45,11 +32,14 @@ const data: {
         name: "更新情報",
       },
       publishedAt: "2023/04/19",
-      createdAt: "2023/04/19",
+      createdeat: "2023/04/19",
     },
   ],
 };
-export default async function Home() {
+
+export default function Home() {
+  const sliceData = data.contents.slice(0, 2);
+
   return (
     <>
       <section className={styles.top}>
@@ -71,6 +61,7 @@ export default async function Home() {
       </section>
       <section className={styles.news}>
         <h2 className={styles.newsTitle}>News</h2>
+        <NewsList news={sliceData} />
         <div className={styles.newsLink}>
           <ButtonLink href="/news">もっとみる</ButtonLink>
         </div>
