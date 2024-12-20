@@ -1,3 +1,4 @@
+
 .top {
   position: relative;
   display: flex;
@@ -51,27 +52,8 @@
   position: absolute;
   right: -40px;
   bottom: -40px;
-  margin-top: 16px;
 }
 
-.news {
-  position: relative;
-  background-color: #fff;
-  width: 840;
-  margin: -40px auto 0;
-  padding: 24px 40px;
-  border-radius: var(--border-radius);
-}
-
-.newsTitle {
-  font-size: 1.5rem;
-}
-
-@media (max-width: 1000px) {
-  .news {
-    width: calc(100% - 160px);
-  }
-}
 @media (max-width: 640px) {
   .top {
     padding: 120px 16px;
@@ -103,5 +85,12 @@
   .news {
     width: calc(100% - 32px);
     padding: 16px 24px;
+  }
+
+  .newsLink {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 16px;
   }
 }

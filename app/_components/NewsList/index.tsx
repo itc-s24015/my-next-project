@@ -5,9 +5,16 @@ import styles from "./index.module.css";
 import Category from "../Category";
 import Date from "../Date";
 import { News } from "@/app/_libs/microcms";
+import { title } from "process";
 
-type Props = {
-  news: News[];
+type Newa = {
+  id: String;
+  title: String;
+  category: {
+    name: String;
+  };
+  publishedAt: string;
+  createdAt: string;
 };
 
 export default function NewsList({ news }: Props) {
