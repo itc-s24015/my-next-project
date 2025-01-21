@@ -1,6 +1,8 @@
-import { getNewsList } from "@/app/_libs/microcms";
+import { getCategoryDetail, getNewsList } from "@/app/_libs/microcms";
+import { notFound } from "next/navigation";
 import NewsList from "@/app/_components/NewsList";
-
+import Category from "@/app/_components/Category";
+import {NEWS_LIST_LIMIT} from "@/app/_constants"
 type Props = {
     params: {
         id: string;
@@ -8,9 +10,18 @@ type Props = {
 };
 
 export default async function Page({params}: Props) {
+    const category = await getCategoryDetail(params.id).catch(notFound);
     const{ contents: news } =await getNewsList({
-        filters: `category[equals]$[params.id]`,
+        filters: `category[equals]$[category.id]`,
     })
 
-    return <NewsList news={news} />;
+    return (
+    <>
+      <p>
+        <Category category={category} /> の一覧
+      </p>
+      <NewsList news={news} />
+     
+    </>
+  );
 }
