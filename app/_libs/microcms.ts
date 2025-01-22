@@ -62,7 +62,6 @@ export const getNewsDetail = async (
     contentId,
     queries,
   });
-
   return detailData;
 };
 
@@ -75,6 +74,5 @@ export const getCategoryDetail = async (
     contentId,
     queries,
   });
-
   return detailData;
 };
