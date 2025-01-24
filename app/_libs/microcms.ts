@@ -4,6 +4,7 @@ import type {
   MicroCMSImage,
   MicroCMSListContent,
 } from "microcms-js-sdk";
+import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 export type Member = {
   name: string;
@@ -73,6 +74,12 @@ export const getCategoryDetail = async (
     endpoint: "categories",
     contentId,
     queries,
+    customRequestInit:{
+      next: {
+        revalidate: queries?.draftKey === undefined ? 60 : 0,
+      },
+    },
   });
   return detailData;
 };
+
