@@ -6,7 +6,7 @@ import { TOP_NEWS_LIMIT } from "@/app/_constants";
 import NewsList from "@/app/_components/NewsList";
 import ButtonLink from "@/app/_components/ButtonLink";
 
-
+export const revalidate = 60;
 
 export default async function Home() {
   const data = await getNewsList({
@@ -27,6 +27,8 @@ export default async function Home() {
           alt=""
           width={4000}
           height={1200}
+          priority
+          sizes="100vw"
         />
       </section>
       <section className={styles.news}>
