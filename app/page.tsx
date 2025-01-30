@@ -25,8 +25,8 @@ export default async function Home() {
           className={styles.bgimg}
           src="/img-mv.jpg"
           alt=""
-          width={4000}
-          height={1200}
+          width={1000}
+          height={300}
           priority
           sizes="100vw"
         />
